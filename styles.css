@@ -1,0 +1,96 @@
+@font-face {
+  font-family: 'Biro Script';
+  src: url('Biro_Script_reduced.ttf') format('truetype');
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  background: #F05423;
+  position: relative;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Full-page background SVG (white ellipse rising from bottom) */
+#page-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+#nametag {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: min(310px, 85vw);
+  container-type: inline-size;
+}
+
+#nametag > svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 29px rgba(0, 0, 0, 0.25));
+}
+
+.name-overlay {
+  position: absolute;
+  top: 33.2%;
+  left: 0;
+  width: 100%;
+  height: 58%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8%;
+}
+
+.name-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: clamp(44px, 10cqw, 38px);
+  text-align: center;
+  color: #444;
+  font-family: 'Biro Script', cursive;
+  font-weight: 500;
+  caret-color: #F05423;
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+.name-input:empty::before {
+  content: attr(data-placeholder);
+  color: #FAC7B6;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  font-size: clamp(20px, 8cqw, 32px);
+}
+
+.clickEnter {
+  position: absolute;
+  top: 120%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: clamp(12px, 4cqw, 18px);
+  color: #aaa;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.clickEnter.visible { opacity: 1; }
+
+#corner-logo {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  pointer-events: none;
+  width: 150px;
+}
